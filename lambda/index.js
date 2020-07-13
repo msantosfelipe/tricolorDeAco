@@ -7,33 +7,33 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    // handle(handlerInput) {
-    //     const speakOutput = 'Bora Bahêa!';
-    //     return handlerInput.responseBuilder
-    //         .speak(speakOutput)
-    //         .reprompt(speakOutput)
-    //         .getResponse();
-    // }
     handle(handlerInput) {
-        return {
-        "response": {
-            "directives": [
-                {
-                    "type": "AudioPlayer.Play",
-                    "playBehavior": "REPLACE_ALL",
-                    "audioItem": {
-                        "stream": {
-                            "token": "12345",
-                            "url": "https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3",
-                            "offsetInMilliseconds": 0
-                        }
-                    }
-                }
-            ],
-            "shouldEndSession": true
-        }
-        }
+        const speakOutput = 'Bora Bahêa!';
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
     }
+    // handle(handlerInput) {
+    //     return {
+    //     "response": {
+    //         "directives": [
+    //             {
+    //                 "type": "AudioPlayer.Play",
+    //                 "playBehavior": "REPLACE_ALL",
+    //                 "audioItem": {
+    //                     "stream": {
+    //                         "token": "12345",
+    //                         "url": "https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3",
+    //                         "offsetInMilliseconds": 0
+    //                     }
+    //                 }
+    //             }
+    //         ],
+    //         "shouldEndSession": true
+    //     }
+    //     }
+    // }
 };
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
