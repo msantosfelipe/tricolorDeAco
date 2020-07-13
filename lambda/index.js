@@ -7,12 +7,32 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
+    // handle(handlerInput) {
+    //     const speakOutput = 'Bora Bahêa!';
+    //     return handlerInput.responseBuilder
+    //         .speak(speakOutput)
+    //         .reprompt(speakOutput)
+    //         .getResponse();
+    // }
     handle(handlerInput) {
-        const speakOutput = 'Bora Bahêa!';
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(speakOutput)
-            .getResponse();
+        return {
+        "response": {
+            "directives": [
+                {
+                    "type": "AudioPlayer.Play",
+                    "playBehavior": "REPLACE_ALL",
+                    "audioItem": {
+                        "stream": {
+                            "token": "12345",
+                            "url": "https://jpc.io/r/brown_noise.mp3",
+                            "offsetInMilliseconds": 0
+                        }
+                    }
+                }
+            ],
+            "shouldEndSession": true
+        }
+        }
     }
 };
 const HelloWorldIntentHandler = {
