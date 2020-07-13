@@ -15,24 +15,11 @@ const LaunchRequestHandler = {
     //         .getResponse();
     // }
     handle(handlerInput) {
-        return {
-        "response": {
-            "directives": [
-                {
-                    "type": "AudioPlayer.Play",
-                    "playBehavior": "REPLACE_ALL",
-                    "audioItem": {
-                        "stream": {
-                            "token": "12345",
-                            "url": "https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3",
-                            "offsetInMilliseconds": 0
-                        }
-                    }
-                }
-            ],
-            "shouldEndSession": true
-        }
-        }
+        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3';
+        
+        return handlerInput.responseBuilder
+            .speak(`Vai tocar o audio <audio src="${audioUrl}"/>`)
+            .getResponse();
     }
 };
 const HelloWorldIntentHandler = {
