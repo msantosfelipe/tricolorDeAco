@@ -18,7 +18,7 @@ const LaunchRequestHandler = {
         const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3';
         
         return handlerInput.responseBuilder
-            .speak(`Vai tocar o audio <audio src="${audioUrl}"/>`)
+            .speak(`<audio src="${audioUrl}"/>`)
             .getResponse();
     }
 };
