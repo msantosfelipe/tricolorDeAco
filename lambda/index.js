@@ -7,31 +7,25 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    // handle(handlerInput) {
-    //     const speakOutput = 'Bora Bahêa!';
-    //     return handlerInput.responseBuilder
-    //         .speak(speakOutput)
-    //         //.reprompt(speakOutput)
-    //         .getResponse();
-    // }
     handle(handlerInput) {
-        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3';
+        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP.mp3';
         
         return handlerInput.responseBuilder
             .speak(`<audio src="${audioUrl}"/>`)
             .getResponse();
     }
 };
-const HelloWorldIntentHandler = {
+const AnthemIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnthemIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World!';
+        const speakOutput = 'Saudações tricolores!';
+        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/HINO_BAHIA.mp3';
+
         return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .speak(`<audio src="${audioUrl}"/>`)
             .getResponse();
     }
 };
@@ -56,7 +50,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'Tchau!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -82,7 +76,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = `You just triggered ${intentName}`;
+        const speakOutput = `Você falou ${intentName}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -100,7 +94,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.stack}`);
-        const speakOutput = `Sorry, I had trouble doing what you asked. Please try again.`;
+        const speakOutput = `Desculpe, não consegui fazer o que você pediu, tente novamente.`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -115,7 +109,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
+        AnthemIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
