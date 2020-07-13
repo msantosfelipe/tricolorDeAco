@@ -25,7 +25,7 @@ const AnthemIntentHandler = {
         const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/HINO_BAHIA.mp3';
 
         return handlerInput.responseBuilder
-            .speak(`<audio src="${audioUrl}"/>`)
+            .speak(`${speakOutput} <audio src="${audioUrl}"/>`)
             .getResponse();
     }
 };
