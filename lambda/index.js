@@ -24,7 +24,7 @@ const LaunchRequestHandler = {
                     "audioItem": {
                         "stream": {
                             "token": "12345",
-                            "url": "https://jpc.io/r/brown_noise.mp3",
+                            "url": "https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP2.mp3",
                             "offsetInMilliseconds": 0
                         }
                     }
