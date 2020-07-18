@@ -71,8 +71,9 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
-
+        const arr = ['Quando será o próximo jogo do Bahia?','Quanto foi o último jogo do Bahia?', 'Grita Bora Bahêa!', 'Toca o hino!'];
+        const speakOutput = 'Você pode experimentar falar ' +  arr[Math.floor(Math.random() * arr.length)] + ' Para sugestões deixe um comentário na página da skill'
+        
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
