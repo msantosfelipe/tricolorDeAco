@@ -56,8 +56,28 @@ const NextMatchIntentHandler = {
     const day = matchDay[1].split("/")[0]
     const month = matchDay[1].split("/")[1]
 
-    const speakOutput = `O próximo jogo será ${nextMatch.teamA} e ${nextMatch.teamB},`
+    const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
         + ` ${Util.getMatchDay(matchDay[0])} <say-as interpret-as="date">????${month}${day}</say-as> ${Util.getHour(matchDay[3])},`
+        + ` ${Util.getLeague(nextMatch.league)}`;
+
+        return handlerInput.responseBuilder
+            .speak(`${speakOutput}`)
+            .getResponse();
+    }
+};
+const LastMatchIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LastMatchIntent';
+    },
+    async handle(handlerInput) {
+    const nextMatch = await Crawler.nextMatch().then(value => value)
+    
+    const matchDay = nextMatch.matchDay.split(" ")
+    const day = matchDay[1].split("/")[0]
+    const month = matchDay[1].split("/")[1]
+
+    const speakOutput = `O último jogo foi ${nextMatch.teamA} ${nextMatch.teamAGoals} contra ${nextMatch.teamB} ${nextMatch.teamBGoals},`
         + ` ${Util.getLeague(nextMatch.league)}`;
 
         return handlerInput.responseBuilder
@@ -147,6 +167,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         NextMatchIntentHandler,
+        LastMatchIntentHandler,
         YellIntentHandler,
         AnthemIntentHandler,
         HelpIntentHandler,
