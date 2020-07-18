@@ -11,9 +11,10 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Saudações tricolores! Posso falar qual será o próximo jogo do esquadrão, o resultado do último jogo, tocar o hino ou gritar Bora Bahêa. O que você quer ouvir?';
-
+        const repromptOutput = 'Posso dar informações do próximo ou do último jogo, tocar o hino ou gritar Bora Bahêa.'
         return handlerInput.responseBuilder
             .speak(speakOutput)
+            .reprompt(repromptOutput)
             .getResponse();
     }
 };
