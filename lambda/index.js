@@ -73,7 +73,7 @@ const LastMatchIntentHandler = {
     async handle(handlerInput) {
     const lastMatch = await Crawler.lastMatch().then(value => value)
     
-    const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals} contra ${lastMatch.teamB} ${lastMatch.teamBGoals},`
+    const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals}, ${lastMatch.teamB} ${lastMatch.teamBGoals},`
         + ` ${Util.getLeague(lastMatch.league)}`;
 
         return handlerInput.responseBuilder
