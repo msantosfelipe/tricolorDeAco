@@ -17,3 +17,15 @@ module.exports.getS3PreSignedUrl = function getS3PreSignedUrl(s3ObjectKey) {
     return s3PreSignedUrl;
 
 }
+
+module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
+    let dayOfWeek = ""
+    if (matchWeekDay.toLocaleLowerCase().includes("sab")
+        || matchWeekDay.toLocaleLowerCase().includes("sáb")
+        || matchWeekDay.toLocaleLowerCase().includes("dom")) {
+            dayOfWeek = 'no ' + matchWeekDay
+    } else {
+            dayOfWeek = 'na ' + matchWeekDay
+    }
+    return dayOfWeek;
+}
