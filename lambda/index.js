@@ -40,10 +40,12 @@ const NextMatchIntentHandler = {
     const nextMatch = await Matches.nextMatch().then(value => value)
     
     const matchDay = nextMatch.matchDay.split(" ")
+    const day = matchDay[1].split("/")[0]
+    const month = matchDay[1].split("/")[1]
 
     const speakOutput = `O próximo jogo será ${nextMatch.teamA} 
         contra ${nextMatch.teamB} 
-        ${Util.getMatchDay(matchDay[0])}
+        ${Util.getMatchDay(matchDay[0])} <say-as interpret-as="date">????${month}${day}5</say-as> 
         pelo campeonato ${nextMatch.league}`;
 
         return handlerInput.responseBuilder
