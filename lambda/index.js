@@ -37,7 +37,7 @@ const NextMatchIntentHandler = {
     },
     async handle(handlerInput) {
     const nextMatch = await Matches.nextMatch().then(value => value)
-    const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB}`;
+    const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB} no dia ${nextMatch.matchDay} pelo ${nextMatch.league}`;
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
