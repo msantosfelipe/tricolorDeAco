@@ -10,10 +10,10 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Saudações tricolores! Posso falar qual será o próximo jogo do esquadrão, o resultado do último jogo, tocar o hino ou gritar bora Bahêa. O que você quer ouvir?';
+        const speakOutput = 'Saudações tricolores! Posso falar qual será o próximo jogo do esquadrão, o resultado do último jogo, tocar o hino ou gritar Bora Bahêa. O que você quer ouvir?';
 
         return handlerInput.responseBuilder
-            .speak(`${speakOutput}`)
+            .speak(speakOutput)
             .getResponse();
     }
 };
