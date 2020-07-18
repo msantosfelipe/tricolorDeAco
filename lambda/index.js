@@ -71,14 +71,10 @@ const LastMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LastMatchIntent';
     },
     async handle(handlerInput) {
-    const nextMatch = await Crawler.nextMatch().then(value => value)
+    const lastMatch = await Crawler.lastMatch().then(value => value)
     
-    const matchDay = nextMatch.matchDay.split(" ")
-    const day = matchDay[1].split("/")[0]
-    const month = matchDay[1].split("/")[1]
-
-    const speakOutput = `O último jogo foi ${nextMatch.teamA} ${nextMatch.teamAGoals} contra ${nextMatch.teamB} ${nextMatch.teamBGoals},`
-        + ` ${Util.getLeague(nextMatch.league)}`;
+    const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals} contra ${lastMatch.teamB} ${lastMatch.teamBGoals},`
+        + ` ${Util.getLeague(lastMatch.league)}`;
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
