@@ -31,6 +31,8 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
 }
 
 module.exports.getHour = function getHour(matchHour) {
+    matchHour = "20h45"
+    
     const hour = matchHour.split("h")
     
     if (hour[1].includes("00")) {
