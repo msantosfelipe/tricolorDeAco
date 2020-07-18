@@ -41,3 +41,11 @@ module.exports.getHour = function getHour(matchHour) {
             return 'às ' + hour[0] + ' horas e ' + hour[1] + ' minutos '
     }
 }
+
+module.exports.getLeague = function getLeague(league) {
+    if (league.toLocaleLowerCase().includes("copa")) {
+            return 'pela ' + league
+    } else {
+            return 'pelo ' + league
+    }
+}
