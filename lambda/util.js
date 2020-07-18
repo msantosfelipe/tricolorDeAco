@@ -29,3 +29,13 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
     }
     return dayOfWeek;
 }
+
+module.exports.getHour = function getHour(matchHour) {
+    const hour = matchHour.split("h")
+    
+    if (hour[1].includes("00")) {
+            return 'às ' + hour[0] + ' horas '
+    } else {
+            return 'às ' + hour[0] + ' horas e ' + hour[1] + ' minutos '
+    }
+}
