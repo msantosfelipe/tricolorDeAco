@@ -2,7 +2,7 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
-const Matches = require('matches.js');
+const Crawler = require('crawler.js');
 const Util = require('util.js');
 
 const LaunchRequestHandler = {
@@ -37,7 +37,7 @@ const NextMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextMatchIntent';
     },
     async handle(handlerInput) {
-    const nextMatch = await Matches.nextMatch().then(value => value)
+    const nextMatch = await Crawler.nextMatch().then(value => value)
     
     const matchDay = nextMatch.matchDay.split(" ")
     const day = matchDay[1].split("/")[0]
@@ -45,7 +45,7 @@ const NextMatchIntentHandler = {
 
     const speakOutput = `O próximo jogo será ${nextMatch.teamA} 
         contra ${nextMatch.teamB} 
-        ${Util.getMatchDay(matchDay[0])} <say-as interpret-as="date">????${month}${day}</say-as> ${matchDay[2]} ${matchDay[3]} 
+        ${Util.getMatchDay(matchDay[0])} <say-as interpret-as="date">????${month}${day}</say-as> ${Util.getHour(matchDay[3])}
         pelo campeonato ${nextMatch.league}`;
 
         return handlerInput.responseBuilder
