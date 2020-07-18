@@ -3,6 +3,7 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 const Matches = require('matches.js');
+const Util = require('util.js');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -42,7 +43,7 @@ const NextMatchIntentHandler = {
 
     const speakOutput = `O próximo jogo será ${nextMatch.teamA} 
         contra ${nextMatch.teamB} 
-        no dia ${matchDay[0]}
+        ${Util.getMatchDay(matchDay[0])}
         pelo campeonato ${nextMatch.league}`;
 
         return handlerInput.responseBuilder
