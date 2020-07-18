@@ -10,10 +10,10 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP.mp3';
-        
+        const speakOutput = 'Saudações tricolores! Posso falar qual será o próximo jogo do esquadrão, o resultado do último jogo, tocar o hino ou gritar bora Bahêa. O que você quer ouvir?';
+
         return handlerInput.responseBuilder
-            .speak(`<audio src="${audioUrl}"/>`)
+            .speak(`${speakOutput}`)
             .getResponse();
     }
 };
@@ -23,11 +23,23 @@ const AnthemIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnthemIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Saudações tricolores!';
         const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/HINO_BAHIA.mp3';
 
         return handlerInput.responseBuilder
-            .speak(`${speakOutput} <audio src="${audioUrl}"/>`)
+            .speak(`<audio src="${audioUrl}"/>`)
+            .getResponse();
+    }
+};
+const YellIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'YellIntent';
+    },
+    handle(handlerInput) {
+        const audioUrl = 'https://raw.githubusercontent.com/msantosfelipe/msantosfelipe/master/BBMP.mp3';
+
+        return handlerInput.responseBuilder
+            .speak(`<audio src="${audioUrl}"/>`)
             .getResponse();
     }
 };
@@ -132,8 +144,9 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        AnthemIntentHandler,
         NextMatchIntentHandler,
+        YellIntentHandler,
+        AnthemIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
