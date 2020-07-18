@@ -2,10 +2,7 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
-
-const cheerio = require('cheerio');
-const got = require('got');
-const url = 'https://www.ecbahia.com/'
+const Matches = require('matches.js');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -39,24 +36,8 @@ const NextMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextMatchIntent';
     },
     async handle(handlerInput) {
-    let scrape = async () => {
-        const response = await got(url);
-        const $ = cheerio.load(response.body);
-    
-        const result = {}
-        let nextMatch = {}
-    
-        // next match
-        nextMatch.teamA = $('.area_proximo_jogo .proximo .escudo_a img').prop('alt')
-        nextMatch.teamB = $('.area_proximo_jogo .proximo .escudo_b img').prop('alt')
-        nextMatch.league = $('.area_proximo_jogo .proximo .infos a span').text()
-        nextMatch.matchDay = $('.area_proximo_jogo .proximo .infos p').text()
-        result.nextMatch = nextMatch
-    
-        return result
-    };
-    const result = await scrape().then(value => value)
-    const speakOutput = `O próximo jogo será ${result.nextMatch.teamA} contra ${result.nextMatch.teamB}`;
+    const nextMatch = await Matches.nextMatch().then(value => value)
+    const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB}`;
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
