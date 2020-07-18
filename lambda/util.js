@@ -31,14 +31,12 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
 }
 
 module.exports.getHour = function getHour(matchHour) {
-    matchHour = "20h45"
-    
     const hour = matchHour.split("h")
     
     if (hour[1].includes("00")) {
-            return 'às ' + hour[0] + ' horas '
+            return 'às ' + hour[0] + ' horas'
     } else {
-            return 'às ' + hour[0] + ' horas e ' + hour[1] + ' minutos '
+            return 'às ' + hour[0] + ' e ' + hour[1] + ' minutos'
     }
 }
 
