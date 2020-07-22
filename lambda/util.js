@@ -42,7 +42,7 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     dayOfWeek = dayOfWeek + `<say-as interpret-as="date">????${month}${day}</say-as>`
 
     if (today.getDate() === matchDay.getDate() && today.getMonth() === matchDay.getMonth()) {
-        dayOfWeek = 'hoje'
+        dayOfWeek = 'hoje,'
     }
 
     return dayOfWeek;
