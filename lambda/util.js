@@ -18,7 +18,7 @@ module.exports.getS3PreSignedUrl = function getS3PreSignedUrl(s3ObjectKey) {
 
 }
 
-module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
+module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     let dayOfWeek = ""
     if (matchWeekDay.toLocaleLowerCase().includes("sab")
         || matchWeekDay.toLocaleLowerCase().includes("sáb")
@@ -27,6 +27,7 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
     } else {
             dayOfWeek = 'na ' + matchWeekDay
     }
+    dayOfWeek = dayOfWeek + `<say-as interpret-as="date">????${month}${day}</say-as>`
     return dayOfWeek;
 }
 
