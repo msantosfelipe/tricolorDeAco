@@ -2,7 +2,7 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
-const Crawler = require('crawler.js');
+const Scraping = require('scraping.js');
 const Util = require('util.js');
 
 const LaunchRequestHandler = {
@@ -50,7 +50,7 @@ const NextMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextMatchIntent';
     },
     async handle(handlerInput) {
-    const nextMatch = await Crawler.nextMatch().then(value => value)
+    const nextMatch = await Scraping.nextMatch().then(value => value)
     
     const matchDay = nextMatch.matchDay.split(" ")
     const day = matchDay[1].split("/")[0]
@@ -71,7 +71,7 @@ const LastMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LastMatchIntent';
     },
     async handle(handlerInput) {
-    const lastMatch = await Crawler.lastMatch().then(value => value)
+    const lastMatch = await Scraping.lastMatch().then(value => value)
     
     const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals}, ${lastMatch.teamB} ${lastMatch.teamBGoals},`
         + ` ${Util.getLeague(lastMatch.league)}`;
