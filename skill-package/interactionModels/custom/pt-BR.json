@@ -1,0 +1,87 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "tricolor de aço",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "o que posso falar",
+            "o que você faz",
+            "me ajuda",
+            "ajuda",
+            "o que você consegue fazer",
+            "o que você pode fazer"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AnthemIntent",
+          "slots": [],
+          "samples": [
+            "toque o hino do Bahia",
+            "toque o hino",
+            "tocar o hino do Bahia",
+            "toca o hino do Bahia",
+            "hino",
+            "hino do esquadrão",
+            "toca o hino",
+            "tocar o hino"
+          ]
+        },
+        {
+          "name": "NextMatchIntent",
+          "slots": [],
+          "samples": [
+            "quando o bahia vai jogar",
+            "qual o próximo jogo",
+            "qual o próximo jogo do bahia",
+            "com quem o bahia vai jogar",
+            "quando será o próximo jogo",
+            "quando será o próximo jogo do Bahia",
+            "proximo jogo"
+          ]
+        },
+        {
+          "name": "LastMatchIntent",
+          "slots": [],
+          "samples": [
+            "resultado do último jogo",
+            "qual foi o último jogo do Bahia",
+            "quanto foi o último jogo do bahia",
+            "quanto foi o último jogo",
+            "qual foi o último jogo",
+            "último jogo"
+          ]
+        },
+        {
+          "name": "YellIntent",
+          "slots": [],
+          "samples": [
+            "bora bahêa minha porra",
+            "grita bora bahêa minha porra",
+            "bbmp",
+            "grita bbmp",
+            "bora bahêa",
+            "grita",
+            "solta o grito",
+            "grita bora bahêa"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "19"
+}

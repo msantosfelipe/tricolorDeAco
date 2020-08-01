@@ -1,0 +1,74 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "pt-BR": {
+          "summary": "Informações dos jogos do Esporte Clube Bahia, ouça o grito de guerra e o hino do esquadrão",
+          "examplePhrases": [
+            "Alexa, abra o Tricolor de Aço",
+            "Alexa, abra o Tricolor de Aço e pergunte quando o Bahia vai jogar",
+            "Alexa, abra o tricolor de aço e pergunte o que eu posso fazer?"
+          ],
+          "keywords": [
+            "bahia",
+            "bahea",
+            "futebol",
+            "tricolor",
+            "bbmp",
+            "campeonato"
+          ],
+          "name": "Tricolor de Aço",
+          "description": "Abra para ouvir quando será o próximo jogo, quanto foi o último jogo\nOuça o grito \"Bora Bahêa Minha P... !!\" e o Hino do Bahia\n\n\nSugestões: felipe_356@hotmail.com",
+          "smallIconUri": "file://assets/images/pt-BR_smallIconUri.png",
+          "updatesDescription": "Nova versão:\n- Quando será o próximo jogo\n- Quanto foi o último jogo",
+          "largeIconUri": "file://assets/images/pt-BR_largeIconUri.png"
+        }
+      },
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "Say \"Alexa, abra o Tricolor de Aço\" and Alexa will tell the skills\u0027s options\nSay \"Alexa, abra o Tricolor de Aço e pergunte qual o próximo jogo?\" and Alexa will tell the next match\nSay \"Alexa, abra o Tricolor de Aço e pergunte quanto foi o último jogo?\" and Alexa will tell the last match score\nSay \"Alexa, abra o Tricolor de Aço e grite Bora Bahêa\" and Alexa will play a sound with a well-known cry from the team\u0027s fans\nSay \"Alexa, peça ao Tricolor de Aço para tocar o hino\" and Alexa will play the team\u0027s anthem",
+      "category": "SPORTS_NEWS",
+      "distributionCountries": [
+        "BR"
+      ]
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:238323431055:function:c9051efd-a7a9-435f-9321-683ea8ae51b3:Release_2"
+        },
+        "interfaces": [],
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:238323431055:function:c9051efd-a7a9-435f-9321-683ea8ae51b3:Release_2"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:238323431055:function:c9051efd-a7a9-435f-9321-683ea8ae51b3:Release_2"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:238323431055:function:c9051efd-a7a9-435f-9321-683ea8ae51b3:Release_2"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "pt-BR": {}
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}
