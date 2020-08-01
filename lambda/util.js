@@ -26,12 +26,11 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     if (matchWeekDay.toLocaleLowerCase().includes("sab")
         || matchWeekDay.toLocaleLowerCase().includes("sáb")
         || matchWeekDay.toLocaleLowerCase().includes("dom")) {
-            dayOfWeek = 'no ' + matchWeekDay
+            dayOfWeek = 'no ' + convertMatchWeekDay(matchWeekDay)
     } else {
-            dayOfWeek = 'na ' + matchWeekDay
+            dayOfWeek = 'na ' + convertMatchWeekDay(matchWeekDay)
     }
-    dayOfWeek = "na Qua "
-    
+
     // Say today, tomorrow or the date
     var todayComplete = new Date()
     var today = new Date(todayComplete.getFullYear(), todayComplete.getMonth(), todayComplete.getDate())
@@ -47,6 +46,28 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     }
 
     return dayOfWeek;
+}
+
+function convertMatchWeekDay(value) {
+    switch (value.toLocaleLowerCase()) {
+        case "seg":
+            return "Segunda feira"
+        case "ter":
+            return "Terça feira"
+        case "qua":
+            return "Quarta feira"
+        case "qui":
+            return "Quinta feira"
+        case "sex":
+            return "Sexta feira"
+        case "sab":
+            return "Sábado"
+        case "sáb":
+            return "Sábado"
+        default:
+            return "Domingo aaa"
+            
+    }
 }
 
 module.exports.getHour = function getHour(matchHour) {
