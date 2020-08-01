@@ -30,6 +30,7 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     } else {
             dayOfWeek = 'na ' + matchWeekDay
     }
+    dayOfWeek = "no Sáb"
     
     // Say today, tomorrow or the date
     var todayComplete = new Date()
