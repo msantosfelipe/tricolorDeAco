@@ -48,24 +48,26 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     return dayOfWeek;
 }
 
-function convertMatchWeekDay(value) {
-    switch (value.toLocaleLowerCase()) {
+function convertMatchWeekDay(matchWeekDay) {
+    var value = matchWeekDay.toLocaleLowerCase().split(".")[0]
+    
+    switch (value) {
         case "seg":
-            return "Segunda feira"
+            return "Segunda feira "
         case "ter":
-            return "Terça feira"
+            return "Terça feira "
         case "qua":
-            return "Quarta feira"
+            return "Quarta feira "
         case "qui":
-            return "Quinta feira"
+            return "Quinta feira "
         case "sex":
-            return "Sexta feira"
+            return "Sexta feira "
         case "sab":
-            return "Sábado"
+            return "Sábado "
         case "sáb":
-            return "Sábado"
+            return "Sábado "
         default:
-            return "Domingo aaa"
+            return "Domingo "
             
     }
 }
