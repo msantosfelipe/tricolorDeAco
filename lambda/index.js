@@ -52,7 +52,8 @@ const NextMatchIntentHandler = {
     },
     async handle(handlerInput) {
     const attributesManager = handlerInput.attributesManager;    
-        
+    const persistentAttributes = attributesManager.getPersistentAttributes() || {};
+
     const nextMatch = await Scraping.nextMatch().then(value => value)
     
     const matchDay = nextMatch.matchDay.split(" ")
