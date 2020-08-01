@@ -21,7 +21,6 @@ module.exports.getS3PreSignedUrl = function getS3PreSignedUrl(s3ObjectKey) {
 module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
     let dayOfWeek = ""
    // const hour = matchHour.split("h")
-   matchWeekDay = "Seg."
 
     // Say 'no' or 'na' and the dayOfWeek
     if (matchWeekDay.toLocaleLowerCase().includes("sab")
