@@ -2,6 +2,7 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
+const persistenceAdapter = require('ask-sdk-s3-persistence-adapter');
 const Scraping = require('scraping.js');
 const Util = require('util.js');
 
@@ -50,6 +51,8 @@ const NextMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextMatchIntent';
     },
     async handle(handlerInput) {
+    const attributesManager = handlerInput.attributesManager;    
+        
     const nextMatch = await Scraping.nextMatch().then(value => value)
     
     const matchDay = nextMatch.matchDay.split(" ")
