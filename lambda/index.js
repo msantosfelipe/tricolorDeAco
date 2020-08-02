@@ -60,10 +60,10 @@ const NextMatchIntentHandler = {
         const nextMatchDateHour = sessionAttributes.hasOwnProperty('hour') ? sessionAttributes.hour : '';
         const nextMatchDateMinute = sessionAttributes.hasOwnProperty('minute') ? sessionAttributes.minute : '';
        
-        const nextMatchDate = new Date(nextMatchDateYear, nextMatchDateMonth, nextMatchDateDay, nextMatchDateHour, nextMatchDateMinute, 0)
+//        const nextMatchDate = new Date(nextMatchDateYear, nextMatchDateMonth, nextMatchDateDay, nextMatchDateHour, nextMatchDateMinute, 0)
 
 
-        const speakOutput = nextMatchDate > new Date()
+        //const speakOutput = nextMatchDate > new Date()
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -75,9 +75,9 @@ const NextMatchIntentHandler = {
         const matchFullDate = Util.getMatchFullDate(day, month)
         const completeHour = matchDayInfo[3]
 
-        //const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-        //     + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
-        //     + ` ${Util.getLeague(nextMatch.league)}`;
+        const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
+             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
+             + ` ${Util.getLeague(nextMatch.league)}`;
         
         
         //
