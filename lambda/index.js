@@ -53,11 +53,10 @@ const NextMatchIntentHandler = {
     async handle(handlerInput) {
         const attributesManager = handlerInput.attributesManager;
         
-        const attributes = "funfou porra"
-        attributesManager.setPersistentAttributes(attributes);
-        await attributesManager.savePersistentAttributes();
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
+        const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : 0;
+
         const speakOutput = attributes
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -69,9 +68,12 @@ const NextMatchIntentHandler = {
         // const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
         //     + ` ${Util.getMatchDay(matchDay[0], month, day)} ${Util.getHour(matchDay[3])},`
         //     + ` ${Util.getLeague(nextMatch.league)}`;
-
-        //
-        //
+        
+        const attributes = {
+            'nextMatch' : 'bar'
+        }
+        attributesManager.setPersistentAttributes(attributes);
+        await attributesManager.savePersistentAttributes();
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
