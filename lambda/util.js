@@ -18,9 +18,8 @@ module.exports.getS3PreSignedUrl = function getS3PreSignedUrl(s3ObjectKey) {
 
 }
 
-module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
+module.exports.getMatchDayOfWeek = function getMatchDayOfWeek(matchWeekDay) {
     let dayOfWeek = ""
-   // const hour = matchHour.split("h")
 
     // Say 'no' or 'na' and the dayOfWeek
     if (matchWeekDay.toLocaleLowerCase().includes("sab")
@@ -34,23 +33,32 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
     return dayOfWeek;
 }
 
-module.exports.getMatchDate = function getMatchDate(month, day) {
-    let date = ""
-
+module.exports.getMatchFullDate = function getMatchFullDate(month, day) {
     // Say today, tomorrow or the date
     var todayComplete = new Date()
     var today = new Date(todayComplete.getFullYear(), todayComplete.getMonth(), todayComplete.getDate())
-    var matchDay = new Date(today.getFullYear(), parseInt(month) - 1, parseInt(day))
+    var fullDate = new Date(today.getFullYear(), parseInt(month) - 1, parseInt(day))
 
+    return fullDate
+}
+
+module.exports.getMatchDate = function getMatchDate(fullDate, month, day) {
+    let date = ""
+    
     date = date + `<say-as interpret-as="date">????${month}${day}</say-as>`
 
+    var todayComplete = new Date()
+    var today = new Date(todayComplete.getFullYear(), todayComplete.getMonth(), todayComplete.getDate())
+
     // If today
-    if (today.getDate() === matchDay.getDate() && today.getMonth() === matchDay.getMonth()) {
+    if (today.getDate() === fullDate.getDate() 
+            && today.getMonth() === fullDate.getMonth()) {
         date = 'hoje'
     }
     
     return date;
 }
+
 
 module.exports.getHour = function getHour(matchHour) {
     const hour = matchHour.split("h")
