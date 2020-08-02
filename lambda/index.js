@@ -63,7 +63,7 @@ const NextMatchIntentHandler = {
         const nextMatchDate = new Date(nextMatchDateYear, nextMatchDateMonth, nextMatchDateDay, nextMatchDateHour, nextMatchDateMinute, 0)
 
 
-        const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+        const speakOutput = nextMatchDate.toLocaleString('en-US') > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
