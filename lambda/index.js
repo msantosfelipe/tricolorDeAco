@@ -54,7 +54,7 @@ const NextMatchIntentHandler = {
         const attributesManager = handlerInput.attributesManager;
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : '';
+        const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.nextMatchDate : '';
         const nextMatchPersisted2 = sessionAttributes.hasOwnProperty('nextMatchHour') ? sessionAttributes.nextMatchHour : '';
 
         const speakOutput = nextMatchPersisted + " e " + nextMatchPersisted2
