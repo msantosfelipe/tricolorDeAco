@@ -54,10 +54,14 @@ const NextMatchIntentHandler = {
         const attributesManager = handlerInput.attributesManager;
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        const nextMatchDate = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.nextMatchDate : '';
+        const nextMatchDateDay = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : '';
+        const nextMatchDateMonth = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : '';
+        const nextMatchDateHour = sessionAttributes.hasOwnProperty('hour') ? sessionAttributes.hour : '';
+        const nextMatchDateMinute = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.minute : '';
+       
        
        // const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
-        const speakOutput = nextMatchDate
+        const speakOutput = nextMatchDateDay +' '+nextMatchDateMonth+' '+nextMatchDateHour+' '+nextMatchDateMinute
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -73,9 +77,15 @@ const NextMatchIntentHandler = {
         //     + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
         //     + ` ${Util.getLeague(nextMatch.league)}`;
         
+        
+        //
+        var h = completeHour.split("h")
         const attributes = {
             //'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
-            'nextMatchDate' : 'aa'
+            'day' : day,
+            'month' : month,
+            'hour' : h[0],
+            'minute' : h[1]
         }
         
         attributesManager.setPersistentAttributes(attributes);
