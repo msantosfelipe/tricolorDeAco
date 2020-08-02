@@ -56,7 +56,8 @@ const NextMatchIntentHandler = {
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchDate = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.nextMatchDate : '';
        
-        const speakOutput = nextMatchDate > new Date()
+       // const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+        const speakOutput = nextMatchDate
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -73,7 +74,8 @@ const NextMatchIntentHandler = {
         //     + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
-            'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
+            //'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
+            'nextMatchDate' : 'aa'
         }
         
         attributesManager.setPersistentAttributes(attributes);
