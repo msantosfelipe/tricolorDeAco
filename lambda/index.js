@@ -165,7 +165,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.stack}`);
-        const speakOutput = `Desculpe, não consegui fazer o que você pediu, tente novamente.`;
+        const speakOutput = `Desculpe, não consegui fazer o que você pediu, tente novamente. ${error.stack}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
