@@ -62,8 +62,8 @@ const NextMatchIntentHandler = {
        
         const nextMatchDate = new Date(nextMatchDateYear, nextMatchDateMonth, nextMatchDateDay, nextMatchDateHour, nextMatchDateMinute, 0)
 
-       // const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
-        const speakOutput = nextMatchDate > new Date()
+
+        const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -83,7 +83,6 @@ const NextMatchIntentHandler = {
         //
         var h = completeHour.split("h")
         const attributes = {
-            //'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
             'day' : day,
             'month' : month,
             'year' : matchFullDate.getFullYear(),
