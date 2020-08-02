@@ -55,9 +55,9 @@ const NextMatchIntentHandler = {
         
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : 0;
+        const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : '';
 
-        const speakOutput = attributes
+        const speakOutput = nextMatchPersisted
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
 
