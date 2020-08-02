@@ -56,12 +56,14 @@ const NextMatchIntentHandler = {
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchDateDay = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : '';
         const nextMatchDateMonth = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : '';
+        const nextMatchDateYear = sessionAttributes.hasOwnProperty('year') ? sessionAttributes.year : '';
         const nextMatchDateHour = sessionAttributes.hasOwnProperty('hour') ? sessionAttributes.hour : '';
         const nextMatchDateMinute = sessionAttributes.hasOwnProperty('minute') ? sessionAttributes.minute : '';
        
-       
+        const nextMatchDate = new Date(nextMatchDateYear, nextMatchDateMonth, nextMatchDateDay, nextMatchDateHour, nextMatchDateMinute, 0)
+
        // const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
-        const speakOutput = nextMatchDateDay +' '+nextMatchDateMonth+' '+nextMatchDateHour+' '+nextMatchDateMinute
+        const speakOutput = nextMatchDate > new Date()
         
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -84,6 +86,7 @@ const NextMatchIntentHandler = {
             //'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
             'day' : day,
             'month' : month,
+            'year' : matchFullDate.getFullYear(),
             'hour' : h[0],
             'minute' : h[1]
         }
