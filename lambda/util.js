@@ -25,12 +25,12 @@ module.exports.getMatchDayOfWeek = function getMatchDayOfWeek(matchWeekDay) {
     if (matchWeekDay.toLocaleLowerCase().includes("sab")
         || matchWeekDay.toLocaleLowerCase().includes("sáb")
         || matchWeekDay.toLocaleLowerCase().includes("dom")) {
-            dayOfWeek = 'no ' + convertMatchWeekDay(matchWeekDay)
+            dayOfWeek = 'no '
     } else {
-            dayOfWeek = 'na ' + convertMatchWeekDay(matchWeekDay)
+            dayOfWeek = 'na '
     }
 
-    return dayOfWeek;
+    return dayOfWeek + convertMatchWeekDay(matchWeekDay) + ' ';
 }
 
 module.exports.getMatchFullDate = function getMatchFullDate(day, month) {
@@ -43,8 +43,8 @@ module.exports.getMatchFullDate = function getMatchFullDate(day, month) {
     return fullDate
 }
 
-module.exports.getMatchDate = function getMatchDate(fullDate, day, month) {
-    let date = ""
+module.exports.getMatchDate = function getMatchDate(dayOfWeek, fullDate, day, month) {
+    let date = dayOfWeek
     
     date = date + `<say-as interpret-as="date">????${month}${day}</say-as>`
 
