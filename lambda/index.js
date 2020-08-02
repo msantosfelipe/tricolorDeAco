@@ -55,7 +55,8 @@ const NextMatchIntentHandler = {
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchDate = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.nextMatchDate : '';
-
+       
+        const speakOutput = nextMatchDate
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
         const matchDayInfo = nextMatch.matchDay.split(" ")
@@ -65,7 +66,6 @@ const NextMatchIntentHandler = {
         const month = matchDayInfo[1].split("/")[1]
         const matchFullDate = Util.getMatchFullDate(day, month)
         const completeHour = matchDayInfo[3]
-        const speakOutput = matchFullDate
 
         //const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
         //     + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
