@@ -55,8 +55,9 @@ const NextMatchIntentHandler = {
         
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : '';
+        const nextMatchPersisted2 = sessionAttributes.hasOwnProperty('nextMatchHour') ? sessionAttributes.nextMatchHour : '';
 
-        //const speakOutput = nextMatchPersisted
+        const speakOutput = nextMatchPersisted + " e " + nextMatchPersisted2
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
         const matchDayInfo = nextMatch.matchDay.split(" ")
@@ -67,12 +68,13 @@ const NextMatchIntentHandler = {
         const matchFullDate = Util.getMatchFullDate(day, month)
         const completeHour = matchDayInfo[3]
 
-        const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
-             + ` ${Util.getLeague(nextMatch.league)}`;
+        //const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
+        //     + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
+        //     + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
-            'nextMatch' : matchFullDate
+            'nextMatchDate' : matchFullDate,
+            'nextMatchHour' : completeHour
         }
         attributesManager.setPersistentAttributes(attributes);
         await attributesManager.savePersistentAttributes();
