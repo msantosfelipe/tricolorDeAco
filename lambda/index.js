@@ -57,7 +57,7 @@ const NextMatchIntentHandler = {
         const nextMatchDateDay = sessionAttributes.hasOwnProperty('day') ? sessionAttributes.day : '';
         const nextMatchDateMonth = sessionAttributes.hasOwnProperty('month') ? sessionAttributes.month : '';
         const nextMatchDateHour = sessionAttributes.hasOwnProperty('hour') ? sessionAttributes.hour : '';
-        const nextMatchDateMinute = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.minute : '';
+        const nextMatchDateMinute = sessionAttributes.hasOwnProperty('minute') ? sessionAttributes.minute : '';
        
        
        // const speakOutput = nextMatchDate > new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
