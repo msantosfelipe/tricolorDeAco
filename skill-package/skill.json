@@ -1,39 +1,5 @@
 {
   "manifest": {
-    "publishingInformation": {
-      "locales": {
-        "pt-BR": {
-          "summary": "Informações dos jogos do Esporte Clube Bahia, ouça o grito de guerra e o hino do esquadrão",
-          "examplePhrases": [
-            "Alexa, abra o Tricolor de Aço",
-            "Alexa, abra o Tricolor de Aço e pergunte quando o Bahia vai jogar",
-            "Alexa, abra o tricolor de aço e pergunte o que eu posso fazer?"
-          ],
-          "keywords": [
-            "bahia",
-            "bahea",
-            "futebol",
-            "tricolor",
-            "bbmp",
-            "campeonato"
-          ],
-          "name": "Tricolor de Aço",
-          "description": "Abra para ouvir quando será o próximo jogo, quanto foi o último jogo\nOuça o grito \"Bora Bahêa Minha P... !!\" e o Hino do Bahia\n\n\nSugestões: felipe_356@hotmail.com",
-          "smallIconUri": "file://assets/images/pt-BR_smallIconUri.png",
-          "updatesDescription": "Nova versão:\n- Quando será o próximo jogo\n- Quanto foi o último jogo",
-          "largeIconUri": "file://assets/images/pt-BR_largeIconUri.png"
-        }
-      },
-      "automaticDistribution": {
-        "isActive": false
-      },
-      "isAvailableWorldwide": false,
-      "testingInstructions": "Say \"Alexa, abra o Tricolor de Aço\" and Alexa will tell the skills\u0027s options\nSay \"Alexa, abra o Tricolor de Aço e pergunte qual o próximo jogo?\" and Alexa will tell the next match\nSay \"Alexa, abra o Tricolor de Aço e pergunte quanto foi o último jogo?\" and Alexa will tell the last match score\nSay \"Alexa, abra o Tricolor de Aço e grite Bora Bahêa\" and Alexa will play a sound with a well-known cry from the team\u0027s fans\nSay \"Alexa, peça ao Tricolor de Aço para tocar o hino\" and Alexa will play the team\u0027s anthem",
-      "category": "SPORTS_NEWS",
-      "distributionCountries": [
-        "BR"
-      ]
-    },
     "apis": {
       "custom": {
         "endpoint": {
@@ -62,13 +28,47 @@
     "manifestVersion": "1.0",
     "privacyAndCompliance": {
       "allowsPurchases": false,
+      "containsAds": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
       "locales": {
         "pt-BR": {}
       },
-      "containsAds": false,
-      "isExportCompliant": true,
-      "isChildDirected": false,
       "usesPersonalInfo": false
+    },
+    "publishingInformation": {
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "category": "SPORTS_NEWS",
+      "distributionCountries": [
+        "BR"
+      ],
+      "isAvailableWorldwide": false,
+      "locales": {
+        "pt-BR": {
+          "description": "Abra para ouvir quando será o próximo jogo, quanto foi o último jogo\nOuça o grito \"Bora Bahêa Minha P... !!\" e o Hino do Bahia\n\n\nSugestões: felipe_356@hotmail.com",
+          "examplePhrases": [
+            "Alexa, abra o Tricolor de Aço",
+            "Alexa, abra o Tricolor de Aço e pergunte quando o Bahia vai jogar",
+            "Alexa, abra o tricolor de aço e pergunte o que eu posso fazer?"
+          ],
+          "keywords": [
+            "bahia",
+            "bahea",
+            "futebol",
+            "tricolor",
+            "bbmp",
+            "campeonato"
+          ],
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/1871/9525aff81bfb485ab7fea17516daf88a/APP_ICON_LARGE?versionId=2vVYLJYbiEG.B7_arH0wPglqDZiHBiFG&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200802T001851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAWBV6LQ4QHE4P6AMV%2F20200802%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=b0a8ba4bd17cc006ef64f1b7e427bab3c040ea3feccfe351012f85838c1701f2",
+          "name": "Tricolor de Aço",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/517b/d425feb963734e2bb20647b2e9234470/APP_ICON?versionId=qS5YgUfaFSoFUHfkxUP8U5hq.O8o.Wsd&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200802T001851Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAWBV6LQ4QHE4P6AMV%2F20200802%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=ff3000d639935a0a59a16733cff5ae8fe7847f6bd88a0ec209c610d8bf8aa5df",
+          "summary": "Informações dos jogos do Esporte Clube Bahia, ouça o grito de guerra e o hino do esquadrão",
+          "updatesDescription": "Nova versão:\n- Quando será o próximo jogo\n- Quanto foi o último jogo"
+        }
+      },
+      "testingInstructions": "Say \"Alexa, abra o Tricolor de Aço\" and Alexa will tell the skills's options\nSay \"Alexa, abra o Tricolor de Aço e pergunte qual o próximo jogo?\" and Alexa will tell the next match\nSay \"Alexa, abra o Tricolor de Aço e pergunte quanto foi o último jogo?\" and Alexa will tell the last match score\nSay \"Alexa, abra o Tricolor de Aço e grite Bora Bahêa\" and Alexa will play a sound with a well-known cry from the team's fans\nSay \"Alexa, peça ao Tricolor de Aço para tocar o hino\" and Alexa will play the team's anthem"
     }
   }
 }

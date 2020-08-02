@@ -89,3 +89,9 @@ module.exports.getLeague = function getLeague(league) {
             return 'pelo ' + league
     }
 }
+
+module.exports.randomHello = function randomHello() {
+    const arr = ['Saudações tricolores!','Bora Baêa!', 'Avante esquadrão!', 'Vamo Baêa!'];
+
+    return arr[Math.floor(Math.random() * arr.length)];
+}
