@@ -52,6 +52,14 @@ const NextMatchIntentHandler = {
     },
     async handle(handlerInput) {
         const attributesManager = handlerInput.attributesManager;
+        
+        const attributes = {
+             'foo' : 'bar'
+         }
+         attributesManager.setPersistentAttributes(attributes);
+         await attributesManager.savePersistentAttributes();
+
+        
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const a = sessionAttributes.hasOwnProperty('foo') ? sessionAttributes.foo : 0;
         const speakOutput = a
@@ -67,11 +75,6 @@ const NextMatchIntentHandler = {
         //     + ` ${Util.getLeague(nextMatch.league)}`;
 
         //
-         const attributes = {
-             'foo' : 'bar'
-         }
-         attributesManager.setPersistentAttributes(attributes);
-         await attributesManager.savePersistentAttributes();
         //
 
         return handlerInput.responseBuilder
