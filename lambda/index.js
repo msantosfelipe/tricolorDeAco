@@ -69,14 +69,14 @@ const NextMatchIntentHandler = {
         const nextMatch = await Scraping.nextMatch().then(value => value)
         const matchDayInfo = nextMatch.matchDay.split(" ")
         
-        const dayofWeek = matchDayInfo[0]
+        const dayofWeek = Util.getMatchDayOfWeek(matchDayInfo[0])
         const day = matchDayInfo[1].split("/")[0]
         const month = matchDayInfo[1].split("/")[1]
         const matchFullDate = Util.getMatchFullDate(day, month)
         const completeHour = matchDayInfo[3]
 
         const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
+             + ` ${Util.getMatchDate(dayofWeek, matchFullDate, day, month)} ${Util.getHour(completeHour)},`
              + ` ${Util.getLeague(nextMatch.league)}`;
         
         
