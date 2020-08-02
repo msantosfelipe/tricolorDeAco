@@ -53,7 +53,7 @@ const NextMatchIntentHandler = {
     async handle(handlerInput) {
         const attributesManager = handlerInput.attributesManager;
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
-        const a = sessionAttributes.hasOwnProperty('foo') ? sessionAttributes.teste : 0;
+        const a = sessionAttributes.hasOwnProperty('foo') ? sessionAttributes.foo : 0;
         const speakOutput = a
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
@@ -67,11 +67,11 @@ const NextMatchIntentHandler = {
         //     + ` ${Util.getLeague(nextMatch.league)}`;
 
         //
-        // const attributes = {
-        //     'foo' : 'bar'
-        // }
-        // attributesManager.setPersistentAttributes(attributes);
-        // await attributesManager.savePersistentAttributes();
+         const attributes = {
+             'foo' : 'bar'
+         }
+         attributesManager.setPersistentAttributes(attributes);
+         await attributesManager.savePersistentAttributes();
         //
 
         return handlerInput.responseBuilder
