@@ -56,7 +56,8 @@ const NextMatchIntentHandler = {
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchDate = sessionAttributes.hasOwnProperty('nextMatchDate') ? sessionAttributes.nextMatchDate : '';
        
-        const speakOutput = nextMatchDate
+        const speakOutput = nextMatchDate > new Date()
+        
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
         const matchDayInfo = nextMatch.matchDay.split(" ")
