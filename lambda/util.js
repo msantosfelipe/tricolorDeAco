@@ -87,13 +87,13 @@ module.exports.randomHello = function randomHello() {
 }
 
 module.exports.prepareMatchDateToPersist = function prepareMatchDateToPersist(matchFullDate, completeHour) {
-    var t = matchFullDate.toString().split("T")[0]
+    // var t = matchFullDate.toString().split("T")[0]
     var h = completeHour.split("h")
     
-    var re = new RegExp("-", 'g');
-    t = t.replace(re, "/")
+    //var re = new RegExp("-", 'g');
+    //t = t.replace(re, "/")
     
-    var d = new Date(t)
+    //var d = new Date(t)
     matchFullDate.setHours(h[0], h[1], 0)
 
     return matchFullDate
