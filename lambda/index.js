@@ -59,19 +59,20 @@ const NextMatchIntentHandler = {
         //const speakOutput = nextMatchPersisted
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
-        const matchDay = nextMatch.matchDay.split(" ")
+        const matchDayInfo = nextMatch.matchDay.split(" ")
         
-        const dayofWeek = matchDay[0]
-        const day = matchDay[1].split("/")[0]
-        const month = matchDay[1].split("/")[1]
-        const completeHour = matchDay[3]
+        const dayofWeek = matchDayInfo[0]
+        const day = matchDayInfo[1].split("/")[0]
+        const month = matchDayInfo[1].split("/")[1]
+        const matchFullDate = Util.getMatchFullDate(day, month)
+        const completeHour = matchDayInfo[3]
 
         const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-             + ` ${Util.getMatchDay(dayofWeek)} ${Util.getMatchDate(day, month)} ${Util.getHour(completeHour)},`
+             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate)} ${Util.getHour(completeHour)},`
              + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
-            'nextMatch' : 'bar'
+            'nextMatch' : matchFullDate
         }
         attributesManager.setPersistentAttributes(attributes);
         await attributesManager.savePersistentAttributes();
