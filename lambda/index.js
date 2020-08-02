@@ -53,21 +53,22 @@ const NextMatchIntentHandler = {
     async handle(handlerInput) {
         const attributesManager = handlerInput.attributesManager;
         
-        
         const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
         const nextMatchPersisted = sessionAttributes.hasOwnProperty('nextMatch') ? sessionAttributes.nextMatch : '';
 
-        const speakOutput = nextMatchPersisted
+        //const speakOutput = nextMatchPersisted
 
         const nextMatch = await Scraping.nextMatch().then(value => value)
-
         const matchDay = nextMatch.matchDay.split(" ")
+        
+        const dayofWeek = matchDay[0]
         const day = matchDay[1].split("/")[0]
         const month = matchDay[1].split("/")[1]
+        const completeHour = matchDay[3]
 
-        // const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-        //     + ` ${Util.getMatchDay(matchDay[0], month, day)} ${Util.getHour(matchDay[3])},`
-        //     + ` ${Util.getLeague(nextMatch.league)}`;
+        const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
+             + ` ${Util.getMatchDay(dayofWeek)} ${Util.getMatchDate(day, month)} ${Util.getHour(completeHour)},`
+             + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
             'nextMatch' : 'bar'
