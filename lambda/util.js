@@ -94,7 +94,7 @@ module.exports.prepareMatchDateToPersist = function prepareMatchDateToPersist(ma
     t = t.replace(re, "/")
     
     var d = new Date(t)
-    d.setHours(h[0], h[1], 0)
+    matchFullDate.setHours(h[0], h[1], 0)
 
     return matchFullDate
 }
