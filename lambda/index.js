@@ -72,7 +72,7 @@ const NextMatchIntentHandler = {
         //     + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
-            'nextMatchDate' : matchFullDate + ' e '+ completeHour
+            'nextMatchDate' : Util.prepareMatchDateToPersist(matchFullDate, completeHour)
         }
         
         attributesManager.setPersistentAttributes(attributes);
