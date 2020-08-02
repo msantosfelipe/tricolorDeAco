@@ -18,7 +18,7 @@ module.exports.getS3PreSignedUrl = function getS3PreSignedUrl(s3ObjectKey) {
 
 }
 
-module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
+module.exports.getMatchDay = function getMatchDay(matchWeekDay) {
     let dayOfWeek = ""
    // const hour = matchHour.split("h")
 
@@ -31,21 +31,49 @@ module.exports.getMatchDay = function getMatchDay(matchWeekDay, month, day) {
             dayOfWeek = 'na ' + convertMatchWeekDay(matchWeekDay)
     }
 
+    return dayOfWeek;
+}
+
+module.exports.getMatchDate = function getMatchDate(month, day) {
+    let date = ""
+
     // Say today, tomorrow or the date
     var todayComplete = new Date()
     var today = new Date(todayComplete.getFullYear(), todayComplete.getMonth(), todayComplete.getDate())
     var matchDay = new Date(today.getFullYear(), parseInt(month) - 1, parseInt(day))
-   // var matchHour = hour[0]
-   // var matchMinutes = hour[1]
-   // var matchDayComplete = new Date(today.getFullYear(), parseInt("07") - 1, parseInt("22"), parseInt("20"), parseInt("00"))
 
-    dayOfWeek = dayOfWeek + `<say-as interpret-as="date">????${month}${day}</say-as>`
+    date = date + `<say-as interpret-as="date">????${month}${day}</say-as>`
 
+    // If today
     if (today.getDate() === matchDay.getDate() && today.getMonth() === matchDay.getMonth()) {
-        dayOfWeek = 'hoje'
+        date = 'hoje'
     }
+    
+    return date;
+}
 
-    return dayOfWeek;
+module.exports.getHour = function getHour(matchHour) {
+    const hour = matchHour.split("h")
+    
+    if (hour[1].includes("00")) {
+            return 'às ' + hour[0] + ' horas'
+    } else {
+            return 'às ' + hour[0] + ' e ' + hour[1] + ' minutos'
+    }
+}
+
+module.exports.getLeague = function getLeague(league) {
+    if (league.toLocaleLowerCase().includes("copa")) {
+            return 'pela ' + league
+    } else {
+            return 'pelo ' + league
+    }
+}
+
+module.exports.randomHello = function randomHello() {
+    const arr = ['Saudações tricolores!','Bora Baêa!', 'Avante esquadrão!', 'Vamo Baêa!'];
+
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function convertMatchWeekDay(matchWeekDay) {
@@ -72,26 +100,3 @@ function convertMatchWeekDay(matchWeekDay) {
     }
 }
 
-module.exports.getHour = function getHour(matchHour) {
-    const hour = matchHour.split("h")
-    
-    if (hour[1].includes("00")) {
-            return 'às ' + hour[0] + ' horas'
-    } else {
-            return 'às ' + hour[0] + ' e ' + hour[1] + ' minutos'
-    }
-}
-
-module.exports.getLeague = function getLeague(league) {
-    if (league.toLocaleLowerCase().includes("copa")) {
-            return 'pela ' + league
-    } else {
-            return 'pelo ' + league
-    }
-}
-
-module.exports.randomHello = function randomHello() {
-    const arr = ['Saudações tricolores!','Bora Baêa!', 'Avante esquadrão!', 'Vamo Baêa!'];
-
-    return arr[Math.floor(Math.random() * arr.length)];
-}
