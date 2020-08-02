@@ -86,6 +86,11 @@ module.exports.randomHello = function randomHello() {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
+module.exports.prepareMatchDateToPersist = function prepareMatchDateToPersist(matchFullDate, completeHour) {
+return ''
+    
+}
+
 function convertMatchWeekDay(matchWeekDay) {
     var value = matchWeekDay.toLocaleLowerCase().split(".")[0]
     
