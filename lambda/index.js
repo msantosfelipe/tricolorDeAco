@@ -68,7 +68,7 @@ const NextMatchIntentHandler = {
         const completeHour = matchDayInfo[3]
 
         const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate)} ${Util.getHour(completeHour)},`
+             + ` ${Util.getMatchDayOfWeek(dayofWeek)} ${Util.getMatchDate(matchFullDate, day, month)} ${Util.getHour(completeHour)},`
              + ` ${Util.getLeague(nextMatch.league)}`;
         
         const attributes = {
