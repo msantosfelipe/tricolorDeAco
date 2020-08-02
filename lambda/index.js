@@ -51,18 +51,28 @@ const NextMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NextMatchIntent';
     },
     async handle(handlerInput) {
-    const attributesManager = handlerInput.attributesManager;    
-    const persistentAttributes = attributesManager.getPersistentAttributes() || {};
+        const attributesManager = handlerInput.attributesManager;
+        const sessionAttributes = await attributesManager.getPersistentAttributes() || {};
+        const a = sessionAttributes.hasOwnProperty('foo') ? sessionAttributes.teste : 0;
+        const speakOutput = a
 
-    const nextMatch = await Scraping.nextMatch().then(value => value)
-    
-    const matchDay = nextMatch.matchDay.split(" ")
-    const day = matchDay[1].split("/")[0]
-    const month = matchDay[1].split("/")[1]
+        const nextMatch = await Scraping.nextMatch().then(value => value)
 
-    const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
-        + ` ${Util.getMatchDay(matchDay[0], month, day)} ${Util.getHour(matchDay[3])},`
-        + ` ${Util.getLeague(nextMatch.league)}`;
+        const matchDay = nextMatch.matchDay.split(" ")
+        const day = matchDay[1].split("/")[0]
+        const month = matchDay[1].split("/")[1]
+
+        // const speakOutput = `O próximo jogo será ${nextMatch.teamA} contra ${nextMatch.teamB},`
+        //     + ` ${Util.getMatchDay(matchDay[0], month, day)} ${Util.getHour(matchDay[3])},`
+        //     + ` ${Util.getLeague(nextMatch.league)}`;
+
+        //
+        // const attributes = {
+        //     'foo' : 'bar'
+        // }
+        // attributesManager.setPersistentAttributes(attributes);
+        // await attributesManager.savePersistentAttributes();
+        //
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
@@ -75,10 +85,10 @@ const LastMatchIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LastMatchIntent';
     },
     async handle(handlerInput) {
-    const lastMatch = await Scraping.lastMatch().then(value => value)
-    
-    const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals}, ${lastMatch.teamB} ${lastMatch.teamBGoals},`
-        + ` ${Util.getLeague(lastMatch.league)}`;
+        const lastMatch = await Scraping.lastMatch().then(value => value)
+
+        const speakOutput = `O último jogo foi ${lastMatch.teamA} ${lastMatch.teamAGoals}, ${lastMatch.teamB} ${lastMatch.teamBGoals},`
+            + ` ${Util.getLeague(lastMatch.league)}`;
 
         return handlerInput.responseBuilder
             .speak(`${speakOutput}`)
@@ -91,9 +101,9 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const arr = ['Quando será o próximo jogo do Bahia?','Quanto foi o último jogo do Bahia?', 'Grita Bora Bahêa!', 'Toca o hino!'];
-        const speakOutput = 'Você pode experimentar falar ' +  arr[Math.floor(Math.random() * arr.length)] + ' Para sugestões deixe um comentário na página da skill'
-        
+        const arr = ['Quando será o próximo jogo do Bahia?', 'Quanto foi o último jogo do Bahia?', 'Grita Bora Bahêa!', 'Toca o hino!'];
+        const speakOutput = 'Você pode experimentar falar ' + arr[Math.floor(Math.random() * arr.length)] + ' Para sugestões deixe um comentário na página da skill'
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -164,6 +174,9 @@ const ErrorHandler = {
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
 exports.handler = Alexa.SkillBuilders.custom()
+    .withPersistenceAdapter(
+        new persistenceAdapter.S3PersistenceAdapter({ bucketName: process.env.S3_PERSISTENCE_BUCKET })
+    )
     .addRequestHandlers(
         LaunchRequestHandler,
         NextMatchIntentHandler,
