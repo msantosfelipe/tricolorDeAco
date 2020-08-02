@@ -33,7 +33,7 @@ module.exports.getMatchDayOfWeek = function getMatchDayOfWeek(matchWeekDay) {
     return dayOfWeek;
 }
 
-module.exports.getMatchFullDate = function getMatchFullDate(month, day) {
+module.exports.getMatchFullDate = function getMatchFullDate(day, month) {
     // Say today, tomorrow or the date
     var todayComplete = new Date()
     var today = new Date(todayComplete.getFullYear(), todayComplete.getMonth(), todayComplete.getDate())
@@ -42,7 +42,7 @@ module.exports.getMatchFullDate = function getMatchFullDate(month, day) {
     return fullDate
 }
 
-module.exports.getMatchDate = function getMatchDate(fullDate, month, day) {
+module.exports.getMatchDate = function getMatchDate(fullDate, day, month) {
     let date = ""
     
     date = date + `<say-as interpret-as="date">????${month}${day}</say-as>`
